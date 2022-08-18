@@ -1,0 +1,36 @@
+
+.game_container {
+
+    display: grid;
+    background-color: rgb(255, 13, 13);
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 2fr;
+    gap: 5%;
+    margin: auto auto auto auto;
+    text-align: center;
+}
+
+div {
+    justify-content: center;
+}
+
+p {
+    color: #000;
+}
+
+.game_header {
+    
+    align-items: center;
+    text-align: center;
+    color: #000;
+    background-color: #fff;
+    outline: 1px solid black;
+}
+
+.game_body {
+
+    text-align: center;
+    color: #000;
+    background-color: #fff;
+    outline: 1px solid black;
+}

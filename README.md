@@ -1,2 +1,2 @@
 # Sokoban
-Sokoban by Saravasha (Siavash Gosheh)
+© Sokoban by Saravasha (Siavash Gosheh)
