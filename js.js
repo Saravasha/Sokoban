@@ -15,7 +15,14 @@ var Tiles = {
   };
   
 
-  console.log("poopy doo");
+
+
+  var KeystrokeEventArea;
+  
+
+
+
+  console.log("is responding");
   /*  Legend
       W = Wall
       B = Movable block
@@ -364,3 +371,17 @@ var Tiles = {
       ],
     ],
   };
+
+
+  // gör om arrays till divvar
+  var createGridItem = document.createElement('div');
+  
+  tileMap01.mapGrid.forEach(element => {
+    createGridItem.innerHTML += element; 
+    document.body.appendChild(createGridItem);
+    createGridItem.id += 1;
+    console.log(createGridItem);    
+  });
+
+  //konstruera playArea som capturar alla keystrokes
+

@@ -1,17 +1,20 @@
 
+body {
+    max-width: 1024px;
+    margin: 25% 25% 0 25%;
+}
+
 .game_container {
 
     display: grid;
     background-color: rgb(255, 13, 13);
     grid-template-columns: auto;
     grid-template-rows: 1fr 2fr;
-    gap: 5%;
-    margin: auto auto auto auto;
+    gap: 1%;
+    padding: 0%;
     text-align: center;
-}
-
-div {
     justify-content: center;
+    outline: 1px solid black;
 }
 
 p {
@@ -28,7 +31,6 @@ p {
 }
 
 .game_body {
-
     text-align: center;
     color: #000;
     background-color: #fff;
