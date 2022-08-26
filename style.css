@@ -36,3 +36,26 @@ p {
     background-color: #fff;
     outline: 1px solid black;
 }
+
+
+
+.tile-wall {
+    display: block;
+}
+.tile-space {
+    display: block;
+} 
+.tile-goal {
+    display: block;
+}
+
+.entity-player {
+    display: block;
+}
+.entity-block {
+    display: block;
+}
+.entity-block-goal {
+    display: block;
+}
+

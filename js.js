@@ -373,15 +373,33 @@ var Tiles = {
   };
 
 
-  // gör om arrays till divvar
+  // var createGridItem = document.createElement('div');
+  // // gör om arrays till divvar
+  // function CreateGrids() {
+    
+  //   tileMap01.mapGrid.forEach(element => {
+  //     // createGridItem += element;
+  //     // createGridItem
+  //     createGridItem.setAttribute('id', ('x' + ':' + element));
+  //     // createGridItem.id += 1;
+  //     // createGridItem.className += element+1;
+
+  //     console.log(createGridItem);    
+  //     return document.body.appendChild(createGridItem);
+  //   });
+  // }
+
   var createGridItem = document.createElement('div');
+  for (g in tileMap01.mapGrid) {
+    
+    // createGridItem;
+    createGridItem.id = 'y:'+g;
+    console.log(g);
+  }
+  document.body.appendChild(createGridItem);
   
-  tileMap01.mapGrid.forEach(element => {
-    createGridItem.innerHTML += element; 
-    document.body.appendChild(createGridItem);
-    createGridItem.id += 1;
-    console.log(createGridItem);    
-  });
+  // CreateGrids();
+
 
   //konstruera playArea som capturar alla keystrokes
 
