@@ -8,11 +8,12 @@
     width: 40px;
     height: 40px;
     padding: 0px;
+    background-color: rgb(78, 44, 44);
+    
     border: none;
     outline: 1px solid black;
     display: inline-block;
 }
-
 .entity-player {
     background-image: url(../images/player.png);
 }
@@ -35,13 +36,4 @@
 
 .tile-space {
  background-color: rgb(78, 44, 44);
-}
-
-/*------ Don't bother with this seection. It's just for layout of the chessboard*/
-.light {
-    background-color: rgb(242, 239, 239);
-}
-
-.dark {
-    background-color: rgb(121, 110, 110);
 }
