@@ -4,17 +4,18 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/sokoban.css">
         <title>Sokoban by Saravasha ©</title>
     </head>
 
-<body>
+<body onload="runGame()">
     <div class="game_container">
-        <div class="game_header"><p>Sokoban</p></div>
-        <div class="game_body"><p>Gameplay Enviroment</p></div>
+        <div id="game_title"><p>Sokoban</p></div>
+        <div id="gamemap"></div>
     </div>
 </body>
 
 <footer><span>© Sokoban by Saravasha (Siavash Gosheh)</span></footer>
-<script src="js.js"></script>
+<script src="SokobanBase.js"></script>
+<script src="App.js"></script>
 </html>

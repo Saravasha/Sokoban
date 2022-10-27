@@ -1,0 +1,27 @@
+#game-area {
+    display: grid;
+    width: 640px;
+    grid-template-columns: repeat(8, auto);
+}
+
+.square {
+    width: 80px;
+    height: 80px;
+    padding: 0px;
+    border: none;
+    outline: 1px solid black;
+    display: inline-block;
+}
+
+.player {
+    background-image: url(../images/chessPiece.png);
+}
+
+/*------ Don't bother with this seection. It's just for layout of the chessboard*/
+.light {
+    background-color: rgb(242, 239, 239);
+}
+
+.dark {
+    background-color: rgb(121, 110, 110);
+}

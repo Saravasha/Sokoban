@@ -1,0 +1,47 @@
+#gamemap {
+    display: grid;
+    width: 640px;
+    grid-template-columns: repeat(19, auto);
+}
+
+.tile {
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+    border: none;
+    outline: 1px solid black;
+    display: inline-block;
+}
+
+.entity-player {
+    background-image: url(../images/player.png);
+}
+
+.entity-block {
+    background-image: url(../images/box.png);
+}
+
+.entity-block-goal {
+    background-image: url(../images/goalBox.png);
+}
+
+.tile-goal {
+    background-image: url(../images/goalTarget.png);
+}
+
+.tile-wall {
+    background-image: url(../images/wall.png);
+}
+
+.tile-space {
+ background-color: rgb(78, 44, 44);
+}
+
+/*------ Don't bother with this seection. It's just for layout of the chessboard*/
+.light {
+    background-color: rgb(242, 239, 239);
+}
+
+.dark {
+    background-color: rgb(121, 110, 110);
+}
