@@ -1,55 +1,53 @@
 
 
 function runGame() {
-    readMap()
-    // alert("running") 
+    
+    mapRandomizer()
+    
     document.addEventListener('keydown', playerInputManager);
 }
 
-function readMap() {
+function mapRandomizer () {
     
-    for (let row = 0; row < tileMap01.height; row++) {
-        for (let column = 0; column < tileMap01.width; column++) {
+    let tilesetArray = [tileMap01, tileMap02, tileMap03]
+    let random = tilesetArray[Math.floor(Math.random() * tilesetArray.length)] 
+    
+    return createMap(random)
+    
+}
+
+function createMap(random) {
+    
+    for (let row = 0; row < random.height; row++) {
+        for (let column = 0; column < random.width; column++) {
         
-        
-            // console.log("Row: " + row + "Column: "+ column);  
             let div = document.createElement("div")
             div.id = column+ "-" +row
             
             div.classList.add("tile")
 
-            if (tileMap01.mapGrid[row][column][0] == "P")
+            if (random.mapGrid[row][column][0] == "P")
             {
                 div.classList.add("entity-player")
-
             } 
-            else if(tileMap01.mapGrid[row][column][0] == "W") {
+            else if(random.mapGrid[row][column][0] == "W") {
                 div.classList.add("tile-wall")
-
             }
-            else if(tileMap01.mapGrid[row][column][0] == "B") {
+            else if(random.mapGrid[row][column][0] == "B") {
                 div.classList.add("entity-block")
 
             }
-
-            else if(tileMap01.mapGrid[row][column][0] == "G") {
+            else if(random.mapGrid[row][column][0] == "G") {
                 div.classList.add("tile-goal")
 
             }
-            else  {
-                div.classList.add("tile-space")
-
-            }
-
-            document.getElementById("gamemap").append(div); 
-
+            document.getElementById("game_map").append(div); 
         }
     }
 }
 
 function playerInputManager(e) {
     e.preventDefault();
-    // console.log(e);
     if (e.key == 'ArrowUp') {
         playerMove('up'); return; 
     }
@@ -66,7 +64,7 @@ function playerInputManager(e) {
 
 
 function playerMove(direction) {
-    // console.log(direction);
+
     let dirModifierX = 0;
     let dirModifierY = 0;
     if (direction == 'up') {
@@ -85,8 +83,6 @@ function playerMove(direction) {
         dirModifierX = -1;
         
     }
-    // console.log("X: "  +dirModifierX);
-    // console.log("Y: " + dirModifierY);
 
     let divCurrPlayerPos = document.getElementsByClassName('entity-player')[0];
     // console.log(divCurrPlayerPos);
@@ -98,8 +94,6 @@ function playerMove(direction) {
     let nextPlayerPosX = Math.floor(playerXcoord) + dirModifierX;
     let nextPlayerPosY = Math.floor(playerYcoord) + dirModifierY;
 
-    
-
     //Find the target div
     let nextPosCoords = nextPlayerPosX + '-' + nextPlayerPosY
     let divNextPlayerPos = document.getElementById(nextPosCoords);
@@ -109,36 +103,35 @@ function playerMove(direction) {
     if (divNextPlayerPos.classList.contains("tile-wall")) {
         return 
     } 
-    if (divNextPlayerPos.classList.contains("tile-space")) {
+
+    if (divNextPlayerPos.classList.contains('entity-block')) {
         
-        divCurrPlayerPos.classList.remove('entity-player');
-        divNextPlayerPos.classList.add('entity-player');
-        divCurrPlayerPos.classList.add('tile-space');
-        return
-    
-    }
-    if (divNextPlayerPos.classList.contains('entity-block')){
-    
         let nextTwoSquaresAheadPosX = Math.floor(playerXcoord) + (dirModifierX * 2) ;
         let nextTwoSquaresAheadPosY = Math.floor(playerYcoord) + (dirModifierY * 2);
         let divNextTwoSquaresAheadPosCoords = nextTwoSquaresAheadPosX + '-' + nextTwoSquaresAheadPosY
         let divTwoSquaresAheadPos = document.getElementById(divNextTwoSquaresAheadPosCoords);
+        
+        /* Win Condition */
+        // if (divNextPlayerPos.classList.contains("entity-block") && divTwoSquaresAheadPos.classList.contains('tile-goal')) {
 
-        if (divTwoSquaresAheadPos.classList.contains('tile-space')) 
-        {
-            divCurrPlayerPos.classList.remove('entity-player');
-            divNextPlayerPos.classList.add('entity-player');
-            divCurrPlayerPos.classList.add('tile-space')
-            
-            divNextPlayerPos.classList.remove('entity-block');
+        //     divTwoSquaresAheadPos.classList.remove('tile-goal');
+        //     divTwoSquaresAheadPos.classList.remove('entity-block');
+        //     divTwoSquaresAheadPos.classList.add('entity-block-goal');
+        // }  
+        
+        if (!divTwoSquaresAheadPos.classList.contains('entity-block') && !divTwoSquaresAheadPos.classList.contains('tile-wall')) {
+
             divTwoSquaresAheadPos.classList.add('entity-block');
-            divNextPlayerPos.classList.add('tile-space');
-            
-            
+            divNextPlayerPos.classList.remove('entity-block');            
+            divNextPlayerPos.classList.add('entity-player');
+            divCurrPlayerPos.classList.remove('entity-player');
+        }
+    }
 
-        } 
-
-
-
+    else {
+        divCurrPlayerPos.classList.remove('entity-player');
+        divNextPlayerPos.classList.add('entity-player');
+        return
     }
 }
+
